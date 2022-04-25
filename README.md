@@ -32,5 +32,4 @@ Here we see how we Deploy a sample Ruby application using the major Devops princ
 
 1. [The application url](https://devops-testcase-2.brandslisten.com/)
 
-1. [Jenkins url](http://3.81.80.126:8080/job/ruby-rails-pipeline/)   _admin/admin_
 
