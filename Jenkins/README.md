@@ -19,4 +19,5 @@ We have run a simple Jenkins container for this purpose
 
 
 
-![Jenkins-UI](https://user-images.githubusercontent.com/68842056/165119816-566947db-95b6-4c6f-87a2-2e4a7c84be29.png)
+
+![Jenkins UI for Ruby Pipeline](https://user-images.githubusercontent.com/68842056/165151107-9fddab77-74f7-4935-8b98-4f04babdbc41.png)
