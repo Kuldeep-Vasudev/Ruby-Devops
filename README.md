@@ -14,7 +14,7 @@ Here we see how we Deploy a sample Ruby application using the major Devops princ
 
 - I have set-up the Ruby-on-Rails application on Docker container and have configured _LogRotate_ too in order to rotate the logs.
 
-- In order to make sure that the Application starts up on failure, Kubernetes is being used to make sure that the desired state of Application is always maintained.
+- In order to make sure that the Application starts up on failure, Kubernetes is being used to make sure that the state of Application is always Highly available and    Fault tolerant.
 
 - In order to make sure that the Application get deployed Automatically, Jenkins has been used for CI/CD. 
 
