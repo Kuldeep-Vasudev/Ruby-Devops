@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: ruby-rails
+    process: web
+  name: ruby-rails
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: ruby-rails
+      process: web
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: ruby-rails
+        process: web
+    spec:
+      containers:
+      - command: ["bin/puma"]
+        args: ["-C", "config/puma.rb"]
+        env:
+        - name: PORT
+          value: "3800"
+        envFrom:
+        - configMapRef:
+            name: ruby-rails
+        image: kuldeepvyadav/ruby:prod
+        imagePullPolicy: Always
+        name: ruby-rails
+        ports:
+        - containerPort: 3800
+          name: http
+          protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3800
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 2

@@ -1,0 +1,46 @@
+pipeline {
+    //agent any
+     // parameters {
+        }
+
+    stages {
+        stage ('Clean Workspace'){
+            steps{
+                sh 'pwd'
+                cleanWs()
+            }
+        }
+        stage ('Build and Push Image'){
+            steps{
+                withAWS(credentials: 'ruby-rails', region: 'us-east-1'){
+                dir ("${params.API}"){
+                // sh "docker build -t ruby-on-rails ."
+                // sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 144555315236.dkr.ecr.us-east-1.amazonaws.com'
+                // sh 'aws ecr --region us-east-1 | docker login AWS --profile pricingengine_developments 346600858412.dkr.ecr.us-east-1.amazonaws.com'
+                // sh "docker tag ${params.API}:latest 144555315236.dkr.ecr.us-east-1.amazonaws.com/${params.API}:${BUILD_NUMBER}"
+                // sh "docker push 144555315236.dkr.ecr.us-east-1.amazonaws.com/${params.API}:${BUILD_NUMBER}"
+                // sh "docker rmi ${params.API}:latest"
+                }
+               }
+
+            }
+        }
+
+        stage ('Deploy to EKS'){
+            steps{
+                withAWS(credentials: 'ruby-rails', region: 'us-east-1'){
+                sh 'aws eks --region us-east-1 update-kubeconfig --name eks-cicd --kubeconfig /opt/domainapi/.kube/prod_rubyconfigfile'
+                sh 'cp -r /opt/domainapi/deployment/*.yaml .'
+               // sh '''
+                '''
+                sh '/opt/domainapi/kubectl apply -f /opt/domainapi --namespace prod-ruby --kubeconfig /opt/domainapi/.kube/prod_rubyconfigfile'
+                sh "/opt/domainapi/kubectl describe deployment ruby-rails --namespace prod-ruby --kubeconfig /opt/domainapi/.kube/prod_rubyconfigfile"
+                }
+
+            }
+        }
+
+
+    }
+}
+
