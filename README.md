@@ -16,7 +16,7 @@ Here we see how we Deploy a sample Ruby application using the major Devops princ
 
 - In order to make sure that the Application starts up on failure, Kubernetes is being used to make sure that the desired state of Application is always maintained.
 
-- In order to make sure that the Application get deployed Automatically, Jenkins has been used for some CI/CD. 
+- In order to make sure that the Application get deployed Automatically, Jenkins has been used for CI/CD. 
 
 - For the above mentioned Kubernetes Cluster, EKS has been used and in order to provision it I have used Terraform.
 
