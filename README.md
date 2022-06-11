@@ -30,6 +30,6 @@ Here we see how we Deploy a sample Ruby application using the major Devops princ
 
 ## Results 
 
-1. [The application url](https://devops-testcase-2.brandslisten.com/)
+1. [The application url](Removed now)
 
 
